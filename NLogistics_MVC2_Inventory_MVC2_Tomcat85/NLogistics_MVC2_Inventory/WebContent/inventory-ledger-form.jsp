@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Inventory Ledger | N Logistics</title><link rel="stylesheet" href="css/style.css"></head><body>
 <div class="sidebar"><div class="brand">N <span>Logistics</span></div><div class="nav">
-<a href="DashboardController">▦ Dashboard</a><a href="ProductController">▣ Products</a><a href="StockController">▤ Stock</a><a href="InventoryLedgerController">↔ Inventory Ledger</a><a href="StockUploadLogController">⇧ Stock Upload Logs</a><a href="SalesTransactionController">₹ Sales Transactions</a>
+<a href="DashboardController">📊 Dashboard</a><a href="ProductController">📦 Products</a><a href="StockController">📋 Stock</a><a href="InventoryLedgerController">📑 Inventory Ledger</a><a href="StockUploadLogController">📥 Stock Upload Logs</a><a href="SalesTransactionController">💰 Sales Transactions</a>
 </div></div><main class="main">
 <% model.InventoryLedger x=(model.InventoryLedger)request.getAttribute("item"); boolean edit=x!=null; %>
 <div class="topbar"><div><h1><%=edit?"Edit Ledger Entry":"Add Ledger Entry"%></h1></div></div>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
+﻿<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +20,21 @@
 		</div>
 	</div>
 	<main class="main">
-		<div class="topbar">
-			<div>
-				<h1>Inventory Dashboard</h1>
-				<div class="muted">N Logistics • MVC2 Management System</div>
-			</div>
-		</div>
+<div class="topbar"> <div> <h1>Inventory Dashboard</h1> <div class="muted">N Logistics • MVC2 Management System</div> </div>
+
+<div>
+    <span class="muted">
+        Welcome, <%=session.getAttribute("username")%>
+    </span>
+
+    <a href="LogoutController"
+       class="btn btn-secondary"
+       style="margin-left: 15px;">
+        Logout
+    </a>
+</div>
+
+</div>
 		<%
 		if (request.getAttribute("dbError") != null) {
 		%><div class="alert">

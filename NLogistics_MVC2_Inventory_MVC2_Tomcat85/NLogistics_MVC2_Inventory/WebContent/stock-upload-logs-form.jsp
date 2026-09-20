@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 
 <%
     boolean uploadResult =
@@ -295,37 +295,8 @@
 
 
     <div class="nav">
-
-        <a href="DashboardController">
-            ▦ Dashboard
-        </a>
-
-
-        <a href="ProductController">
-            ▣ Products
-        </a>
-
-
-        <a href="StockController">
-            ▤ Stock
-        </a>
-
-
-        <a href="InventoryLedgerController">
-            ↔ Inventory Ledger
-        </a>
-
-
-        <a href="StockUploadLogController">
-            ⇧ Stock Upload Logs
-        </a>
-
-
-        <a href="SalesTransactionController">
-            ₹ Sales Transactions
-        </a>
-
-    </div>
+<a href="DashboardController">📊 Dashboard</a><a href="ProductController">📦 Products</a><a href="StockController">📋 Stock</a><a href="InventoryLedgerController">📑 Inventory Ledger</a><a href="StockUploadLogController">📥 Stock Upload Logs</a><a href="SalesTransactionController">💰 Sales Transactions</a>
+</div>
 
 </div>
 

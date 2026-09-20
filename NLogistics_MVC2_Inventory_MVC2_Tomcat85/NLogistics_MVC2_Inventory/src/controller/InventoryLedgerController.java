@@ -1,8 +1,47 @@
- package controller;
-import implementors.InventoryLedgerImplementor; import model.InventoryLedger; import javax.servlet.*; import javax.servlet.annotation.WebServlet; import javax.servlet.http.*; import java.io.IOException;
+package controller;
+
+import implementors.InventoryLedgerImplementor;
+import model.InventoryLedger;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+import java.io.IOException;
+
 @WebServlet("/InventoryLedgerController")
 public class InventoryLedgerController extends HttpServlet {
- private InventoryLedgerImplementor op=new InventoryLedgerImplementor();
- protected void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException{String a=req.getParameter("action");if("edit".equals(a)){req.setAttribute("item",op.getById(Integer.parseInt(req.getParameter("id"))));req.getRequestDispatcher("/inventory-ledger-form.jsp").forward(req,res);}else if("delete".equals(a)){op.delete(Integer.parseInt(req.getParameter("id")));res.sendRedirect("InventoryLedgerController");}else{req.setAttribute("items",op.getAll());req.getRequestDispatcher("/inventory-ledger.jsp").forward(req,res);}}
- protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException{InventoryLedger x=new InventoryLedger(); String id=req.getParameter("ledgerId"); if(id!=null&&!id.isEmpty())x.setLedgerId(Integer.parseInt(id)); x.setProductId(Integer.parseInt(req.getParameter("productId"))); x.setTransactionType(req.getParameter("transactionType")); x.setQuantity(Double.parseDouble(req.getParameter("quantity"))); x.setUnitCostAtTxn(Double.parseDouble(req.getParameter("unitCostAtTxn"))); x.setReferenceType(req.getParameter("referenceType")); x.setReferenceId(req.getParameter("referenceId")); x.setTxnDate(req.getParameter("txnDate")); if(id!=null&&!id.isEmpty())op.update(x);else op.save(x);res.sendRedirect("InventoryLedgerController");}
+	private static final long serialVersionUID = 1L;
+	private InventoryLedgerImplementor op = new InventoryLedgerImplementor();
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String a = req.getParameter("action");
+		if ("edit".equals(a)) {
+			req.setAttribute("item", op.getById(Integer.parseInt(req.getParameter("id"))));
+			req.getRequestDispatcher("/inventory-ledger-form.jsp").forward(req, res);
+		} else if ("delete".equals(a)) {
+			op.delete(Integer.parseInt(req.getParameter("id")));
+			res.sendRedirect("InventoryLedgerController");
+		} else {
+			req.setAttribute("items", op.getAll());
+			req.getRequestDispatcher("/inventory-ledger.jsp").forward(req, res);
+		}
+	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		InventoryLedger x = new InventoryLedger();
+		String id = req.getParameter("ledgerId");
+		if (id != null && !id.isEmpty())
+			x.setLedgerId(Integer.parseInt(id));
+		x.setProductId(Integer.parseInt(req.getParameter("productId")));
+		x.setTransactionType(req.getParameter("transactionType"));
+		x.setQuantity(Double.parseDouble(req.getParameter("quantity")));
+		x.setUnitCostAtTxn(Double.parseDouble(req.getParameter("unitCostAtTxn")));
+		x.setReferenceType(req.getParameter("referenceType"));
+		x.setReferenceId(req.getParameter("referenceId"));
+		x.setTxnDate(req.getParameter("txnDate"));
+		if (id != null && !id.isEmpty())
+			op.update(x);
+		else
+			op.save(x);
+		res.sendRedirect("InventoryLedgerController");
+	}
 }

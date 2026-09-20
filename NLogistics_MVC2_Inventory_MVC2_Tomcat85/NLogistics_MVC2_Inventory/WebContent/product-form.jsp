@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Product | N Logistics</title><link rel="stylesheet" href="css/style.css"></head><body>
 <div class="sidebar"><div class="brand">N <span>Logistics</span></div><div class="nav">
-<a href="DashboardController">▦ Dashboard</a><a href="ProductController">▣ Products</a><a href="StockController">▤ Stock</a><a href="InventoryLedgerController">↔ Inventory Ledger</a><a href="StockUploadLogController">⇧ Stock Upload Logs</a><a href="SalesTransactionController">₹ Sales Transactions</a>
+<a href="DashboardController">📊 Dashboard</a><a href="ProductController">📦 Products</a><a href="StockController">📋 Stock</a><a href="InventoryLedgerController">📑 Inventory Ledger</a><a href="StockUploadLogController">📥 Stock Upload Logs</a><a href="SalesTransactionController">💰 Sales Transactions</a>
 </div></div><main class="main">
 <% model.Product p=(model.Product)request.getAttribute("item"); boolean edit=p!=null; %>
 <div class="topbar"><div><h1><%=edit?"Edit Product":"Add Product"%></h1><div class="muted">Maintain product_name, category, HSN and prices</div></div></div>
