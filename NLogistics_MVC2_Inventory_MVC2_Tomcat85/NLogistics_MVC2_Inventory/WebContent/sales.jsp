@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Sales Transactions | N Logistics</title><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="sidebar"><div class="brand">N <span>Logistics</span></div><div class="nav">
+<a href="DashboardController">▦ Dashboard</a><a href="ProductController">▣ Products</a><a href="StockController">▤ Stock</a><a href="InventoryLedgerController">↔ Inventory Ledger</a><a href="StockUploadLogController">⇧ Stock Upload Logs</a><a href="SalesTransactionController">₹ Sales Transactions</a>
+</div></div><main class="main">
+<div class="topbar"><div><h1>Sales Transactions</h1><div class="muted">Historical sale price and calculated sale amount</div></div><a class="btn btn-primary" href="sales-form.jsp">+ Add Sale</a></div>
+<div class="panel"><div class="table-wrap"><table><tr><th>ID</th><th>Product</th><th>Customer</th><th>Shipment</th><th>Qty</th><th>Sale Price</th><th>Sale Amount</th><th>Date</th><th>Actions</th></tr>
+<% java.util.List<model.SalesTransaction> items=(java.util.List<model.SalesTransaction>)request.getAttribute("items"); for(model.SalesTransaction x:items){ %><tr><td><%=x.getTransactionId()%></td><td><%=x.getProductName()%></td><td><%=x.getCustomerName()%></td><td><%=x.getShipmentId()==null?"-":x.getShipmentId()%></td><td><%=x.getQuantitySold()%></td><td>₹ <%=x.getSalePriceSnapshot()%></td><td><b>₹ <%=x.getSaleAmount()%></b></td><td><%=x.getSaleDate()%></td><td><a class="btn btn-secondary btn-sm" href="SalesTransactionController?action=edit&id=<%=x.getTransactionId()%>">Edit</a> <a class="btn btn-danger btn-sm" href="SalesTransactionController?action=delete&id=<%=x.getTransactionId()%>" onclick="return confirm('Delete this sale?')">Delete</a></td></tr><% } %></table></div></div>
+</main></body></html>

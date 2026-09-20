@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Stock Upload Logs | N Logistics</title><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="sidebar"><div class="brand">N <span>Logistics</span></div><div class="nav">
+<a href="DashboardController">▦ Dashboard</a><a href="ProductController">▣ Products</a><a href="StockController">▤ Stock</a><a href="InventoryLedgerController">↔ Inventory Ledger</a><a href="StockUploadLogController">⇧ Stock Upload Logs</a><a href="SalesTransactionController">₹ Sales Transactions</a>
+</div></div><main class="main">
+<div class="topbar"><div><h1>Stock Upload Logs</h1><div class="muted">Track bulk upload batches and validation results</div></div><a class="btn btn-primary" href="stock-upload-logs-form.jsp">+ Add Upload Log</a></div>
+<div class="panel"><div class="table-wrap"><table><tr><th>ID</th><th>Company</th><th>Uploaded By</th><th>File</th><th>Total</th><th>Success</th><th>Failure</th><th>Error Report</th><th>Uploaded</th><th>Actions</th></tr>
+<% java.util.List<model.StockUploadLog> items=(java.util.List<model.StockUploadLog>)request.getAttribute("items"); for(model.StockUploadLog x:items){ %><tr><td><%=x.getUploadId()%></td><td><%=x.getCompanyName()%></td><td><%=x.getUploadedByName()%></td><td><%=x.getFileName()%></td><td><%=x.getTotalRecords()%></td><td><%=x.getSuccessCount()%></td><td><%=x.getFailureCount()%></td><td><%=x.getErrorReportPath()%></td><td><%=x.getUploadedAt()%></td><td><a class="btn btn-secondary btn-sm" href="StockUploadLogController?action=edit&id=<%=x.getUploadId()%>">Edit</a> <a class="btn btn-danger btn-sm" href="StockUploadLogController?action=delete&id=<%=x.getUploadId()%>" onclick="return confirm('Delete this upload log?')">Delete</a></td></tr><% } %></table></div></div>
+</main></body></html>

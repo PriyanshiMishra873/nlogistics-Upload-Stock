@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Inventory Ledger | N Logistics</title><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="sidebar"><div class="brand">N <span>Logistics</span></div><div class="nav">
+<a href="DashboardController">▦ Dashboard</a><a href="ProductController">▣ Products</a><a href="StockController">▤ Stock</a><a href="InventoryLedgerController">↔ Inventory Ledger</a><a href="StockUploadLogController">⇧ Stock Upload Logs</a><a href="SalesTransactionController">₹ Sales Transactions</a>
+</div></div><main class="main">
+<div class="topbar"><div><h1>Inventory Ledger</h1><div class="muted">IN / OUT / ADJUSTMENT movement history</div></div><a class="btn btn-primary" href="inventory-ledger-form.jsp">+ Add Entry</a></div>
+<div class="panel"><div class="table-wrap"><table><tr><th>ID</th><th>Product</th><th>Type</th><th>Qty</th><th>Unit Cost</th><th>Reference</th><th>Date</th><th>Actions</th></tr>
+<% java.util.List<model.InventoryLedger> items=(java.util.List<model.InventoryLedger>)request.getAttribute("items"); for(model.InventoryLedger x:items){ %><tr><td><%=x.getLedgerId()%></td><td><%=x.getProductName()%></td><td><span class="badge"><%=x.getTransactionType()%></span></td><td><%=x.getQuantity()%></td><td>₹ <%=x.getUnitCostAtTxn()%></td><td><%=x.getReferenceType()%> / <%=x.getReferenceId()%></td><td><%=x.getTxnDate()%></td><td><a class="btn btn-secondary btn-sm" href="InventoryLedgerController?action=edit&id=<%=x.getLedgerId()%>">Edit</a> <a class="btn btn-danger btn-sm" href="InventoryLedgerController?action=delete&id=<%=x.getLedgerId()%>" onclick="return confirm('Delete this ledger entry?')">Delete</a></td></tr><% } %></table></div></div>
+</main></body></html>
